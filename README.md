@@ -19,8 +19,11 @@ that accomplishes following:
 
 * [x] UI is implemented in QML
 
-* [ ] There is a list of items
-    * e.g. fruit with properties of name and price
+* [x] There is a list of items
+    * e.g. different type of fruit
+
+* [ ] There are some item properties that can be accessed individually 
+    * e.g. properties of name and price
 
 * [ ] An item is implemented in C++ and is not dependent on QML UI
     * e.g. it is a plain C++ object or Q_OBJECT (preferably plain
