@@ -7,5 +7,13 @@ Window {
     height: 480
     title: "Hello World"
 
-    FruitList {}
+    FruitList {
+        anchors.left: parent.left
+        anchors.leftMargin: 12
+
+        anchors.top: parent.top
+        anchors.topMargin: 12
+
+        anchors.bottom: parent.bottom
+    }
 }
