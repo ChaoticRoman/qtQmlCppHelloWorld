@@ -4,8 +4,6 @@ ListView {
     id: list
     width: 200
 
-    model: FruitListModel {}
-
     delegate: Rectangle
     {
         // it is very important for a delegate to have dimensions
@@ -25,7 +23,7 @@ ListView {
             anchors.margins: 4
 
             text: name
-            font.pointSize: 14
+            font.pointSize: 12
         }
 
         MouseArea {

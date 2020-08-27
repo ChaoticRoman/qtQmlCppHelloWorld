@@ -10,20 +10,21 @@ Window {
     FruitList {
         id: list
 
-        anchors.left: parent.left
+        model: FruitListModel {}
 
+        anchors.left: parent.left
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-
         anchors.margins: 12
     }
 
     FruitDetail {
-        anchors.left: list.right
+        text: list.currentIndex
 
+        anchors.left: list.right
+        anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom
-
         anchors.margins: 12
     }
 }
