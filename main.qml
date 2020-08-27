@@ -19,7 +19,10 @@ Window {
     }
 
     FruitDetail {
-        text: list.currentIndex
+        property int index: list.currentIndex
+        property var item: list.model.get(index)
+
+        text: item.name + "\nPrice: " + item.price
 
         anchors.left: list.right
         anchors.right: parent.right

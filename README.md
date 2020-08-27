@@ -22,7 +22,7 @@ that accomplishes following:
 * [x] There is a list of items
     * e.g. different type of fruit
 
-* [ ] There are some item properties that can be accessed individually 
+* [x] There are some item properties that can be accessed individually 
     * e.g. properties of name and price
 
 * [ ] An item is implemented in C++ and is not dependent on QML UI
