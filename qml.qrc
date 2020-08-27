@@ -3,5 +3,6 @@
         <file>main.qml</file>
         <file>FruitList.qml</file>
         <file>FruitListModel.qml</file>
+        <file>FruitDetail.qml</file>
     </qresource>
 </RCC>

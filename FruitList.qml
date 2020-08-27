@@ -2,6 +2,7 @@ import QtQuick 2.0
 
 ListView {
     id: list
+    width: 200
 
     model: FruitListModel {}
 

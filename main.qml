@@ -8,12 +8,22 @@ Window {
     title: "Hello World"
 
     FruitList {
+        id: list
+
         anchors.left: parent.left
-        anchors.leftMargin: 12
 
         anchors.top: parent.top
-        anchors.topMargin: 12
-
         anchors.bottom: parent.bottom
+
+        anchors.margins: 12
+    }
+
+    FruitDetail {
+        anchors.left: list.right
+
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+
+        anchors.margins: 12
     }
 }
