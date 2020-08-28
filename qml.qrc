@@ -1,8 +1,9 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>FruitList.qml</file>
+        <file>ItemList.qml</file>
         <file>FruitListModel.qml</file>
-        <file>FruitDetail.qml</file>
+        <file>ItemDetail.qml</file>
+        <file>ItemDelegate.qml</file>
     </qresource>
 </RCC>

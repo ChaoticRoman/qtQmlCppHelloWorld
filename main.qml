@@ -7,7 +7,7 @@ Window {
     height: 480
     title: "Hello World"
 
-    FruitList {
+    ItemList {
         id: list
 
         model: FruitListModel {}
@@ -18,7 +18,7 @@ Window {
         anchors.margins: 12
     }
 
-    FruitDetail {
+    ItemDetail {
         property int index: list.currentIndex
         property var item: list.model.get(index)
 

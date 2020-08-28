@@ -8,7 +8,7 @@ that accomplishes following:
         * [x] Linux
         * [ ] Windows
         * [ ] macOS
-        * [ ] Android
+        * [x] Android
         * [ ] iOS
     * Build, install and run process documented:
         * [ ] Linux
