@@ -20,7 +20,7 @@ QVariant FruitListModel::data(const QModelIndex &index, int role) const
     if (!index.isValid())
         return QVariant();
 
-    if (index.row() < 0 || fruitList_.size() <= index.row())
+    if (!inBounds(index.row()))
         return QVariant();
 
     if (role == nameRole)
@@ -39,7 +39,7 @@ QHash<int, QByteArray> FruitListModel::roleNames() const
     return names;
 }
 
-QVariantMap FruitListModel::get(int i) {
+QVariantMap FruitListModel::get(int i) const {
     QHash<int, QByteArray> names = roleNames();
     QHashIterator<int, QByteArray> iter(names);
     QVariantMap res;
@@ -54,6 +54,8 @@ QVariantMap FruitListModel::get(int i) {
 
 void FruitListModel::setName(int i, QString name)
 {
+    if (!inBounds(i)) return;
+
      fruitList_[i].name = name;
      QModelIndex index = createIndex(i, 0);
      emit dataChanged(index, index);
@@ -61,6 +63,7 @@ void FruitListModel::setName(int i, QString name)
 
 void FruitListModel::setPrice(int i, double price)
 {
+    if (!inBounds(i)) return;
     fruitList_[i].price = price;
     QModelIndex index = createIndex(i, 0);
     emit dataChanged(index, index);
@@ -69,7 +72,25 @@ void FruitListModel::setPrice(int i, double price)
 void FruitListModel::addItem()
 {
     int index = fruitList_.length();
-    emit beginInsertRows(QModelIndex(), index, index);
+    beginInsertRows(QModelIndex(), index, index);
     fruitList_ << Fruit {QString("Item #%0").arg(index), 0};
-    emit endInsertRows();
+    endInsertRows();
+}
+
+void FruitListModel::removeItem(int i)
+{
+    if (!inBounds(i)) return;
+
+    beginRemoveRows(QModelIndex(), i, i);
+    fruitList_.removeAt(i);
+    endRemoveRows();
+}
+
+bool FruitListModel::inBounds(int i) const
+{
+    if (i >= 0 && i < fruitList_.length())
+        return true;
+
+    qDebug() << "Out of bound access to index" << i;
+    return false;
 }

@@ -1,5 +1,4 @@
 import QtQuick 2.0
-import QtQuick.Controls 2.12
 
 Column {
     property var model // be carreful on direction of binding
@@ -38,10 +37,9 @@ Column {
         }
         // [1] https://stackoverflow.com/questions/42505727/qt-qml-can-a-mousearea-see-events-but-pass-them-all-to-parent-without-affectin
     }
-    Button {
+
+    MyButton {
         id: addButton
-        width: parent.width
-        height: 30
         text: "Add new..."
         onClicked: parent.model.addItem()
     }

@@ -3,7 +3,6 @@ import QtQuick.Controls 2.12
 
 TextField {
     font.pointSize: 20
-    anchors.margins: 12
 
     MouseArea {
         anchors.fill: parent

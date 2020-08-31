@@ -27,12 +27,15 @@ public:
 
     virtual QHash<int, QByteArray> roleNames() const override;
 
-    Q_INVOKABLE QVariantMap get(int i);
+    Q_INVOKABLE QVariantMap get(int i) const;
     Q_INVOKABLE void setName(int i, QString name);
     Q_INVOKABLE void setPrice(int i, double price);
     Q_INVOKABLE void addItem();
+    Q_INVOKABLE void removeItem(int i);
 
 private:
     QList<Fruit> fruitList_;
+
+    bool inBounds(int i) const;
 };
 #endif // FRUITLISTMODEL_H
