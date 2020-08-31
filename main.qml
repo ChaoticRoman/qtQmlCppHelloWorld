@@ -21,10 +21,8 @@ Window {
     }
 
     ItemDetail {
-        property int index: list.currentIndex
-
-        name: list.model.get(index).nameRole
-        price: list.model.get(index).priceRole
+        model: list.model
+        index: list.currentIndex
 
         anchors.left: list.right
         anchors.right: parent.right

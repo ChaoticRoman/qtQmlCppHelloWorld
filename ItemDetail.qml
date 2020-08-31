@@ -2,8 +2,12 @@ import QtQuick 2.0
 import QtQuick.Controls 2.12
 
 Rectangle {
-    property string name
-    property double price
+    property var index
+    property var model
+
+    property var name: model.get(index).nameRole
+    property var price: model.get(index).priceRole
+
 
     MyTextField {
         id: name
@@ -11,6 +15,11 @@ Rectangle {
 
         anchors.top: parent.top
         anchors.left: parent.left
+
+        onEditingFinished: {
+            console.log(index, text)
+            parent.model.setName(index, text)
+        }
     }
 
     MyTextField {
@@ -19,6 +28,11 @@ Rectangle {
 
         anchors.top: name.bottom
         anchors.left: parent.left
+
+        onEditingFinished: {
+            console.log(index, text)
+            parent.model.setPrice(index, text)
+        }
     }
 
     border.width: 1

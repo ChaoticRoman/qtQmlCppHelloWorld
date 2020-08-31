@@ -38,15 +38,22 @@ QHash<int, QByteArray> FruitListModel::roleNames() const
     return names;
 }
 
-QVariantMap FruitListModel::get(int row) {
+QVariantMap FruitListModel::get(int i) {
     QHash<int, QByteArray> names = roleNames();
-    QHashIterator<int, QByteArray> i(names);
+    QHashIterator<int, QByteArray> iter(names);
     QVariantMap res;
-    while (i.hasNext()) {
-        i.next();
-        QModelIndex idx = index(row, 0);
-        QVariant data = idx.data(i.key());
-        res[i.value()] = data;
+    while (iter.hasNext()) {
+        iter.next();
+        QModelIndex idx = index(i, 0);
+        QVariant data = idx.data(iter.key());
+        res[iter.value()] = data;
     }
     return res;
+}
+
+void FruitListModel::setName(int i, QString name)
+{
+     fruitList_[i].name = name;
+     QModelIndex index = createIndex(i, 0);
+     emit dataChanged(index, index);
 }
