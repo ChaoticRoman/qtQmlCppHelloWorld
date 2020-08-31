@@ -29,7 +29,8 @@ public:
 
     Q_INVOKABLE QVariantMap get(int i);
     Q_INVOKABLE void setName(int i, QString name);
-    Q_INVOKABLE void setPrice(int i, double price) { fruitList_[i].price = price; }
+    Q_INVOKABLE void setPrice(int i, double price);
+    Q_INVOKABLE void addItem();
 
 private:
     QList<Fruit> fruitList_;

@@ -1,4 +1,5 @@
 #include "FruitListModel.h"
+#include <QDebug>
 
 FruitListModel::FruitListModel(QObject *parent):
     QAbstractListModel(parent)
@@ -56,4 +57,19 @@ void FruitListModel::setName(int i, QString name)
      fruitList_[i].name = name;
      QModelIndex index = createIndex(i, 0);
      emit dataChanged(index, index);
+}
+
+void FruitListModel::setPrice(int i, double price)
+{
+    fruitList_[i].price = price;
+    QModelIndex index = createIndex(i, 0);
+    emit dataChanged(index, index);
+}
+
+void FruitListModel::addItem()
+{
+    int index = fruitList_.length();
+    emit beginInsertRows(QModelIndex(), index, index);
+    fruitList_ << Fruit {QString("Item #%0").arg(index), 0};
+    emit endInsertRows();
 }

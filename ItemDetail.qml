@@ -16,10 +16,7 @@ Rectangle {
         anchors.top: parent.top
         anchors.left: parent.left
 
-        onEditingFinished: {
-            console.log(index, text)
-            parent.model.setName(index, text)
-        }
+        onEditingFinished: parent.model.setName(index, text)
     }
 
     MyTextField {
@@ -29,10 +26,7 @@ Rectangle {
         anchors.top: name.bottom
         anchors.left: parent.left
 
-        onEditingFinished: {
-            console.log(index, text)
-            parent.model.setPrice(index, text)
-        }
+        onEditingFinished: parent.model.setPrice(index, text)
     }
 
     border.width: 1

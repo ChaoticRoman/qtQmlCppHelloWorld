@@ -7,7 +7,7 @@ Rectangle
     // it is very important for a delegate to have dimensions
     // for ListView's stacking order to work
     height: 30
-    width: 200
+    width: parent.width
 
     // highlight has z-order 0 so our item goes over it thus we need
     // to make it transparent for highlight colorto have any effect

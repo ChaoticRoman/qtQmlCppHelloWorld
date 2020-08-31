@@ -1,28 +1,48 @@
 import QtQuick 2.0
+import QtQuick.Controls 2.12
 
-ListView {
-    id: list
+Column {
+    property var model // be carreful on direction of binding
+    property var currentIndex: list.currentIndex
+
     width: 200
+    height: parent.height
+    spacing: 30
 
-    highlightMoveDuration: 200
+    ListView {
+        id: list
+        width: parent.width
+        height: parent.height - addButton.height - parent.spacing
 
-    delegate: ItemDelegate {
-        text: nameRole  // name must be provided by model's items
-    }
+        model: parent.model // model is read from Column's model
 
-    spacing: 6
+        highlightMoveDuration: 200
 
-    highlight: Rectangle {
-        color: "lightsteelblue"
-    }
-
-    MouseArea {
-        anchors.fill: parent
-        propagateComposedEvents: true // [1]
-        onClicked: {
-            parent.focus = true
-            mouse.accepted = false // [1]
+        delegate: ItemDelegate {
+            text: nameRole  // name must be provided by model's items
         }
+
+        spacing: 6
+
+        highlight: Rectangle {
+            color: "lightsteelblue"
+        }
+
+        MouseArea {
+            anchors.fill: parent
+            propagateComposedEvents: true // [1]
+            onClicked: {
+                parent.focus = true
+                mouse.accepted = false // [1]
+            }
+        }
+        // [1] https://stackoverflow.com/questions/42505727/qt-qml-can-a-mousearea-see-events-but-pass-them-all-to-parent-without-affectin
     }
-    // [1] https://stackoverflow.com/questions/42505727/qt-qml-can-a-mousearea-see-events-but-pass-them-all-to-parent-without-affectin
+    Button {
+        id: addButton
+        width: parent.width
+        height: 30
+        text: "Add new..."
+        onClicked: parent.model.addItem()
+    }
 }
