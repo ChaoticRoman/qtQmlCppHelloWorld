@@ -11,7 +11,7 @@ Window {
     ItemList {
         id: list
 
-        model: FruitListModel {}
+        model: fruitListModel
 
         anchors.left: parent.left
         anchors.top: parent.top
