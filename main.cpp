@@ -3,6 +3,7 @@
 #include <QGuiApplication>
 #include <QQmlContext>
 #include <QQmlApplicationEngine>
+#include <QTimer>
 
 int main(int argc, char *argv[])
 {
@@ -22,6 +23,10 @@ int main(int argc, char *argv[])
 
     FruitListModel fruitListModel;
     engine.rootContext()->setContextProperty("fruitListModel", &fruitListModel);
+
+    QTimer timer;
+    QObject::connect(&timer, &QTimer::timeout, &fruitListModel, &FruitListModel::inflatePrices);
+    timer.start(1000);
 
     engine.load(url);
 

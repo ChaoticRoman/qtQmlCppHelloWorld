@@ -33,6 +33,8 @@ public:
     Q_INVOKABLE void addItem();
     Q_INVOKABLE void removeItem(int i);
 
+    void inflatePrices();
+
 private:
     QList<Fruit> fruitList_;
 

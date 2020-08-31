@@ -94,3 +94,9 @@ bool FruitListModel::inBounds(int i) const
     qDebug() << "Out of bound access to index" << i;
     return false;
 }
+
+void FruitListModel::inflatePrices()
+{
+    for(int i=0; i < fruitList_.length(); ++i)
+        setPrice(i, 1.1 * fruitList_[i].price);
+}

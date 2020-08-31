@@ -20,7 +20,7 @@ Rectangle {
 
     MyTextField {
         id: priceField
-        text: if (parent.index >= 0) parent.price; else "";
+        text: if (parent.index >= 0) parent.price.toFixed(2); else "";
 
         anchors.top: nameField.bottom
         anchors.left: parent.left
