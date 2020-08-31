@@ -4,5 +4,6 @@
         <file>ItemList.qml</file>
         <file>ItemDetail.qml</file>
         <file>ItemDelegate.qml</file>
+        <file>MyTextField.qml</file>
     </qresource>
 </RCC>

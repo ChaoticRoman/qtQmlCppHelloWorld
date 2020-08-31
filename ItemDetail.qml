@@ -1,15 +1,24 @@
 import QtQuick 2.0
+import QtQuick.Controls 2.12
 
 Rectangle {
-    property string text
+    property string name
+    property double price
 
-    Text {
-        text: parent.text
+    MyTextField {
+        id: name
+        text: parent.name
 
-        font.pointSize: 20
+        anchors.top: parent.top
+        anchors.left: parent.left
+    }
 
-        anchors.fill: parent
-        anchors.margins: 12
+    MyTextField {
+        id: price
+        text: parent.price
+
+        anchors.top: name.bottom
+        anchors.left: parent.left
     }
 
     border.width: 1

@@ -3,8 +3,9 @@
 FruitListModel::FruitListModel(QObject *parent):
     QAbstractListModel(parent)
 {
-    for (int i=0; i < 10000; i++)
-        fruitList_ << Fruit {QString("Banana #%0").arg(i), 1.01 * i};
+    fruitList_ << Fruit {"Apple", 0.6};
+    fruitList_ << Fruit {"Banana", 1.1};
+    fruitList_ << Fruit {"Lemon", 1.4};
 }
 
 int FruitListModel::rowCount(const QModelIndex &parent) const

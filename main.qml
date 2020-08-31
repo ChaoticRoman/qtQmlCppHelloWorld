@@ -23,10 +23,8 @@ Window {
     ItemDetail {
         property int index: list.currentIndex
 
-        property var name: list.model.get(index).nameRole
-        property var price: list.model.get(index).priceRole
-
-        text: name + "\nPrice: " + price
+        name: list.model.get(index).nameRole
+        price: list.model.get(index).priceRole
 
         anchors.left: list.right
         anchors.right: parent.right
