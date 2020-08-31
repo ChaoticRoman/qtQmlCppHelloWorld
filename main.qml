@@ -1,3 +1,5 @@
+import FruitListModel 1.0
+
 import QtQuick 2.12
 import QtQuick.Window 2.12
 
@@ -20,9 +22,11 @@ Window {
 
     ItemDetail {
         property int index: list.currentIndex
-        property var item: list.model.get(index)
 
-        text: item.name + "\nPrice: " + item.price
+        property var name: list.model.get(index).nameRole
+        property var price: list.model.get(index).priceRole
+
+        text: name + "\nPrice: " + price
 
         anchors.left: list.right
         anchors.right: parent.right

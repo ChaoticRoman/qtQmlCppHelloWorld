@@ -25,7 +25,7 @@ that accomplishes following:
 * [x] There are some item properties that can be accessed individually 
     * e.g. properties of name and price
 
-* [ ] An item is implemented in C++ and is not dependent on QML UI
+* [x] An item is implemented in C++ and is not dependent on QML UI
     * e.g. it is a plain C++ object or Q_OBJECT (preferably plain
       C++ object with Q_OBJECT interface to QML)
 

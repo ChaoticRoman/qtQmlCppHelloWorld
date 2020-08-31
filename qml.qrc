@@ -2,7 +2,6 @@
     <qresource prefix="/">
         <file>main.qml</file>
         <file>ItemList.qml</file>
-        <file>FruitListModel.qml</file>
         <file>ItemDetail.qml</file>
         <file>ItemDelegate.qml</file>
     </qresource>
