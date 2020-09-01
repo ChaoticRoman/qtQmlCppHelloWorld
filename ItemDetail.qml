@@ -7,6 +7,16 @@ Rectangle {
     property var name: if (index >= 0) model.get(index).nameRole; else ""
     property var price: if (index >= 0) model.get(index).priceRole; else -1;
 
+    Connections {
+        target: model
+        onDataChanged: {
+            if (index >= 0)
+            {
+                name = model.get(index).nameRole;;
+                price = model.get(index).priceRole;
+            }
+        }
+    }
 
     MyTextField {
         id: nameField
