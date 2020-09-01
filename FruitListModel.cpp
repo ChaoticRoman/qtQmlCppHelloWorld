@@ -4,9 +4,9 @@
 FruitListModel::FruitListModel(QObject *parent):
     QAbstractListModel(parent)
 {
-    fruitList_ << Fruit {"Apple", 0.6};
-    fruitList_ << Fruit {"Banana", 1.1};
-    fruitList_ << Fruit {"Lemon", 1.4};
+    fruitList_ << Fruit {"Apple", 1.0};
+    fruitList_ << Fruit {"Banana", 1.0};
+    fruitList_ << Fruit {"Lemon", 1.0};
 }
 
 int FruitListModel::rowCount(const QModelIndex &parent) const
@@ -43,6 +43,7 @@ QVariantMap FruitListModel::get(int i) const {
     QHash<int, QByteArray> names = roleNames();
     QHashIterator<int, QByteArray> iter(names);
     QVariantMap res;
+
     while (iter.hasNext()) {
         iter.next();
         QModelIndex idx = index(i, 0);
@@ -84,6 +85,8 @@ void FruitListModel::removeItem(int i)
     beginRemoveRows(QModelIndex(), i, i);
     fruitList_.removeAt(i);
     endRemoveRows();
+    QModelIndex index = createIndex(i, 0);
+    emit dataChanged(index, index);
 }
 
 bool FruitListModel::inBounds(int i) const
@@ -98,5 +101,5 @@ bool FruitListModel::inBounds(int i) const
 void FruitListModel::inflatePrices()
 {
     for(int i=0; i < fruitList_.length(); ++i)
-        setPrice(i, 1.1 * fruitList_[i].price);
+        setPrice(i, fruitList_[i].price + 0.1);
 }

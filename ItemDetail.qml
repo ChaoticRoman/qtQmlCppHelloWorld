@@ -4,17 +4,16 @@ Rectangle {
     property var index
     property var model
 
-    property var name: if (index >= 0) model.get(index).nameRole; else ""
-    property var price: if (index >= 0) model.get(index).priceRole; else -1;
+    property var name: model.get(index).nameRole
+    property var price: model.get(index).priceRole
 
     Connections {
         target: model
         onDataChanged: {
-            if (index >= 0)
-            {
-                name = model.get(index).nameRole;;
-                price = model.get(index).priceRole;
-            }
+            if (!nameField.focus)
+                name = model.get(index).nameRole ? model.get(index).nameRole : "";
+            if (!priceField.focus)
+                price = model.get(index).priceRole ? model.get(index).priceRole : "";
         }
     }
 
@@ -30,12 +29,17 @@ Rectangle {
 
     MyTextField {
         id: priceField
-        text: if (parent.index >= 0) parent.price.toFixed(2); else "";
+        text: if (price && parent.index >= 0) parent.price.toFixed(2); else "";
 
         anchors.top: nameField.bottom
         anchors.left: parent.left
 
-        onEditingFinished: parent.model.setPrice(index, text)
+        // The originalValue stuff is for changes to take effect as nothing
+        // is happening when user does not change the field and change
+        // the value if he or she does.
+        property string originalValue
+        onFocusChanged: if (focus) originalValue = text
+        onEditingFinished: if (text != originalValue) parent.model.setPrice(index, text)
     }
 
     MyButton {
